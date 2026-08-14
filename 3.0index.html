@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="HeritageGuard helps communities and researchers report and protect cultural and archaeological heritage."
+  >
+
+  <title>HeritageGuard | Protect Our Heritage</title>
+
+  <style>
+    /* =====================================================
+       HERITAGEGUARD COLOR PALETTE
+       ===================================================== */
+
+    :root {
+      --green-dark: #063b25;
+      --green: #07502f;
+      --green-light: #11744a;
+      --green-soft: #eaf6ef;
+
+      --gold-dark: #b47d16;
+      --gold: #c9972e;
+      --gold-light: #d9ad45;
+      --gold-soft: #fff7df;
+
+      --white: #ffffff;
+      --cream: #fafbf8;
+
+      --text: #17231d;
+      --muted: #68736d;
+      --border: #e3e9e4;
+
+      --shadow: 0 14px 40px rgba(5, 59, 37, 0.10);
+
+      --radius: 18px;
+    }
+
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 82px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+
+    /* BRAND */
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+
+      display: grid;
+      place-items: center;
+
+      border: 2px solid var(--gold);
+      border-radius: 14px 14px 20px 20px;
+
+      background: var(--gold-soft);
+
+      color: var(--gold-dark);
+
+      font-size: 25px;
+    }
+
+    .brand-name {
+      color: var(--green-dark);
+
+      font-size: 25px;
+      font-weight: 800;
+
+      letter-spacing: -0.7px;
+    }
+
+    .brand-name span {
+      color: var(--gold);
+    }
+
+    .tagline {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+
+    /* NAVIGATION */
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      gap: 28px;
+    }
+
+    .nav-links a {
+      position: relative;
+
+      color: #26322c;
+
+      font-size: 14px;
+      font-weight: 650;
+
+      padding: 30px 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 21px;
+
+      height: 3px;
+
+      border-radius: 20px;
+
+      background: var(--gold);
+    }
+
+
+    /* HEADER BUTTONS */
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .btn {
+      min-height: 46px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      padding: 0 20px;
+
+      border-radius: 10px;
+
+      border: none;
+
+      font-weight: 750;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-green {
+      background: var(--green);
+
+      color: white;
+
+      box-shadow:
+        0 8px 20px rgba(7, 80, 47, 0.16);
+    }
+
+    .btn-outline {
+      background: white;
+
+      color: var(--green-dark);
+
+      border: 1.5px solid var(--gold);
+    }
+
+    .btn-gold {
+      background: var(--gold-light);
+
+      color: var(--green-dark);
+    }
+
+
+    /* MOBILE MENU BUTTON */
+
+    .menu-btn {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: var(--green-soft);
+
+      color: var(--green-dark);
+
+      cursor: pointer;
+
+      font-size: 20px;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+
+      min-height: 620px;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.98) 0%,
+          rgba(255,255,255,0.93) 38%,
+          rgba(255,255,255,0.25) 75%
+        ),
+        url("images/heritage-hero.jpg")
+        center / cover
+        no-repeat;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+
+      min-height: 620px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-copy {
+      width: min(600px, 100%);
+
+      padding: 60px 0 100px;
+    }
+
+
+    /* HERO LABEL */
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 18px;
+
+      padding: 7px 13px;
+
+      border-radius: 50px;
+
+      background: var(--green-soft);
+
+      border: 1px solid #cde8d7;
+
+      color: var(--green);
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+
+    /* HERO TITLE */
+
+    h1 {
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: clamp(52px, 7vw, 82px);
+
+      line-height: 0.98;
+
+      letter-spacing: -3px;
+
+      color: var(--green-dark);
+
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero-copy p {
+      max-width: 580px;
+
+      margin-bottom: 30px;
+
+      color: #38433d;
+
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+
+    /* HERO CARD */
+
+    .hero-card {
+      position: absolute;
+
+      right: 0;
+      bottom: 110px;
+
+      width: 280px;
+
+      padding: 30px;
+
+      border-radius: 22px;
+
+      background: rgba(255,255,255,0.95);
+
+      box-shadow: var(--shadow);
+
+      border: 1px solid white;
+    }
+
+    .hero-card-icon {
+      width: 62px;
+      height: 62px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 18px;
+
+      border-radius: 50%;
+
+      background: var(--gold-soft);
+
+      color: var(--gold-dark);
+
+      font-size: 29px;
+    }
+
+    .hero-card h3 {
+      margin-bottom: 8px;
+
+      color: var(--green-dark);
+    }
+
+    .hero-card p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       STATISTICS
+       ===================================================== */
+
+    .stats {
+      position: relative;
+      z-index: 10;
+
+      margin-top: -30px;
+    }
+
+    .stats-card {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      overflow: hidden;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      padding: 25px;
+
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-icon {
+      flex: 0 0 54px;
+
+      width: 54px;
+      height: 54px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--green-soft);
+
+      color: var(--green-dark);
+
+      font-size: 22px;
+    }
+
+    .stat strong {
+      display: block;
+
+      color: var(--green-dark);
+
+      font-size: 27px;
+
+      line-height: 1;
+
+      margin-bottom: 5px;
+    }
+
+    .stat small {
+      color: var(--muted);
+
+      font-weight: 650;
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       GENERAL SECTIONS
+       ===================================================== */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-head {
+      max-width: 680px;
+
+      margin: 0 auto 45px;
+
+      text-align: center;
+    }
+
+    .section-head h2 {
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      color: var(--green-dark);
+
+      font-size: clamp(32px, 4vw, 46px);
+
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .gold-line {
+      width: 55px;
+      height: 4px;
+
+      margin: 16px auto;
+
+      border-radius: 20px;
+
+      background: var(--gold);
+    }
+
+
+    /* =====================================================
+       HOW IT WORKS
+       ===================================================== */
+
+    .steps {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .step {
+      position: relative;
+
+      padding: 28px 24px;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      box-shadow:
+        0 8px 25px rgba(5, 59, 37, 0.05);
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 18px;
+
+      border-radius: 50%;
+
+      background: var(--gold-light);
+
+      color: var(--green-dark);
+
+      font-weight: 900;
+    }
+
+    .step-icon {
+      margin-bottom: 14px;
+
+      font-size: 34px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+
+      color: var(--green-dark);
+    }
+
+    .step p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       RECENT REPORTS
+       ===================================================== */
+
+    .reports-section {
+      background: #f2f7f3;
+    }
+
+    .reports-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 24px;
+    }
+
+    .panel {
+      overflow: hidden;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      box-shadow:
+        0 8px 25px rgba(5, 59, 37, 0.05);
+    }
+
+    .panel-header {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 20px 23px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-header h3 {
+      color: var(--green-dark);
+    }
+
+    .live {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      color: var(--green);
+
+      font-size: 12px;
+
+      font-weight: 800;
+    }
+
+    .live::before {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #1e9c5a;
+
+      box-shadow:
+        0 0 0 5px #dff5e8;
+    }
+
+    .report-list {
+      padding: 5px 20px;
+    }
+
+    .report-item {
+      display: grid;
+
+      grid-template-columns: 54px 1fr auto;
+
+      align-items: center;
+
+      gap: 13px;
+
+      padding: 15px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .report-item:last-child {
+      border-bottom: none;
+    }
+
+    .report-thumb {
+      width: 54px;
+      height: 54px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--gold)
+        );
+
+      color: white;
+
+      font-size: 20px;
+    }
+
+    .report-item h4 {
+      color: #24312a;
+
+      font-size: 14px;
+    }
+
+    .report-item p {
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+    .status {
+      padding: 5px 10px;
+
+      border-radius: 20px;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      white-space: nowrap;
+    }
+
+    .pending {
+      color: #7b5900;
+
+      background: var(--gold-soft);
+    }
+
+    .review {
+      color: var(--green-dark);
+
+      background: var(--green-soft);
+    }
+
+    .resolved {
+      color: #176d3e;
+
+      background: #e3f6e9;
+    }
+
+    .empty {
+      padding: 35px 10px;
+
+      text-align: center;
+
+      color: var(--muted);
+    }
+
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    .cta {
+      padding: 70px 0;
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(217,173,69,.18),
+          transparent 28%
+        ),
+        var(--green-dark);
+
+      color: white;
+    }
+
+    .cta-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .cta h2 {
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 38px;
+
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      color: #d7e5dd;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      padding: 28px 0;
+
+      background: #032d1d;
+
+      color: #d7e5dd;
+    }
+
+    .footer-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+    }
+
+    .footer-brand span {
+      color: var(--gold-light);
+    }
+
+    .footer-note {
+      color: #9fb5a9;
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE DESIGN
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+
+      .hero-card {
+        right: 25px;
+
+        width: 230px;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-card {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .reports-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media (max-width: 680px) {
+
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .brand-name {
+        font-size: 21px;
+      }
+
+      .tagline {
+        display: none;
+      }
+
+      .hero {
+        min-height: 700px;
+      }
+
+      .hero-inner {
+        min-height: 700px;
+
+        align-items: flex-start;
+      }
+
+      .hero-copy {
+        padding-top: 65px;
+      }
+
+      .hero-card {
+        left: 14px;
+        right: 14px;
+        bottom: 90px;
+
+        width: auto;
+      }
+
+      .stats-card {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: none;
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat:last-child {
+        border-bottom: none;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-inner,
+      .footer-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       HEADER
+
+       IMPORTANT:
+       This is a PUBLIC navigation bar.
+
+       There is intentionally:
+       ❌ No Dashboard
+       ❌ No Admin
+       ❌ No Administration
+       ===================================================== -->
+
+  <header>
+
+    <div class="container nav">
+
+      <!-- BRAND -->
+
+      <a href="index.html" class="brand">
+
+        <div class="brand-mark">
+          🏛
+        </div>
+
+        <div>
+
+          <div class="brand-name">
+            Heritage<span>Guard</span>
+          </div>
+
+          <span class="tagline">
+            Protect. Report. Preserve.
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- PUBLIC NAVIGATION -->
+
+      <nav class="nav-links">
+
+        <a
+          href="index.html"
+          class="active"
+        >
+          Home
+        </a>
+
+        <a href="heritage-sites.html">
+          Heritage Sites
+        </a>
+
+        <a href="report.html">
+          Report Threat
+        </a>
+
+        <a href="reports.html">
+          Reports
+        </a>
+
+        <a href="about.html">
+          About Us
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <!-- ACTIONS -->
+
+      <div class="nav-actions">
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          title="Switch to dark mode"
+        >
+          🌙
+        </button>
+
+        <a
+          href="login.html"
+          class="btn btn-outline"
+        >
+          ♙ Login
+        </a>
+
+        <a
+          href="report.html"
+          class="btn btn-green"
+        >
+          🛡 Report a Threat
+        </a>
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open navigation menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       MAIN WEBSITE
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO SECTION
+         =================================================== -->
+
+    <section class="hero">
+
+      <div class="container hero-inner">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">
+            🛡 Community-powered heritage protection
+          </div>
+
+
+          <h1>
+            Protect Our
+            <span>Heritage</span>
+          </h1>
+
+
+          <p>
+            HeritageGuard connects communities, researchers and
+            heritage stakeholders to report threats, document
+            damage and help preserve archaeological and cultural
+            heritage for future generations.
+          </p>
+
+
+          <div class="hero-buttons">
+
+            <a
+              href="report.html"
+              class="btn btn-green"
+            >
+              🛡 Report a Threat
+            </a>
+
+            <a
+              href="heritage-sites.html"
+              class="btn btn-outline"
+            >
+              📍 Explore Heritage Sites
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- HERO INFORMATION CARD -->
+
+        <aside class="hero-card">
+
+          <div class="hero-card-icon">
+            🏛
+          </div>
+
+          <h3>
+            Together we safeguard our history.
+          </h3>
+
+          <p>
+            Every responsible report can help communities
+            and responsible authorities respond to threats
+            before valuable heritage is lost.
+          </p>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         DYNAMIC STATISTICS
+         =================================================== -->
+
+    <section class="stats">
+
+      <div class="container">
+
+        <div class="stats-card">
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              🛡
+            </div>
+
+            <div>
+
+              <strong id="reportsCount">
+                0
+              </strong>
+
+              <small>
+                Reports Submitted
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              🏛
+            </div>
+
+            <div>
+
+              <strong id="sitesCount">
+                0
+              </strong>
+
+              <small>
+                Heritage Sites
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <strong id="resolvedCount">
+                0
+              </strong>
+
+              <small>
+                Resolved Cases
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              ♙
+            </div>
+
+            <div>
+
+              <strong id="usersCount">
+                0
+              </strong>
+
+              <small>
+                Community Members
+              </small>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         HOW HERITAGEGUARD WORKS
+         =================================================== -->
+
+    <section>
+
+      <div class="container">
+
+
+        <div class="section-head">
+
+          <h2>
+            How HeritageGuard Works
+          </h2>
+
+          <div class="gold-line"></div>
+
+          <p>
+            A simple reporting process designed to help
+            people document and respond to heritage threats.
+          </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+          <!-- STEP 1 -->
+
+          <article class="step">
+
+            <div class="step-number">
+              1
+            </div>
+
+            <div class="step-icon">
+              📝
+            </div>
+
+            <h3>
+              Report
+            </h3>
+
+            <p>
+              Submit a report about suspected illegal
+              excavation, artifact removal, site damage
+              or another heritage threat.
+            </p>
+
+          </article>
+
+
+          <!-- STEP 2 -->
+
+          <article class="step">
+
+            <div class="step-number">
+              2
+            </div>
+
+            <div class="step-icon">
+              📍
+            </div>
+
+            <h3>
+              Locate
+            </h3>
+
+            <p>
+              Provide the location and useful details
+              so the issue can be identified and understood.
+            </p>
+
+          </article>
+
+
+          <!-- STEP 3 -->
+
+          <article class="step">
+
+            <div class="step-number">
+              3
+            </div>
+
+            <div class="step-icon">
+              🔎
+            </div>
+
+            <h3>
+              Review
+            </h3>
+
+            <p>
+              Submitted information can be reviewed
+              and verified by authorized heritage personnel.
+            </p>
+
+          </article>
+
+
+          <!-- STEP 4 -->
+
+          <article class="step">
+
+            <div class="step-number">
+              4
+            </div>
+
+            <div class="step-icon">
+              🛡
+            </div>
+
+            <h3>
+              Protect
+            </h3>
+
+            <p>
+              Verified cases can support appropriate
+              action and collaboration with responsible
+              authorities.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         RECENT REPORTS
+         =================================================== -->
+
+    <section class="reports-section">
+
+      <div class="container">
+
+        <div class="reports-grid">
+
+
+          <!-- RECENT REPORTS -->
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <h3>
+                Recent Reports
+              </h3>
+
+              <span class="live">
+                Live
+              </span>
+
+            </div>
+
+
+            <div
+              id="recentReports"
+              class="report-list"
+            >
+
+              <div class="empty">
+                Loading recent reports...
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- WHY HERITAGEGUARD -->
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <h3>
+                Why HeritageGuard?
+              </h3>
+
+            </div>
+
+
+            <div style="padding:25px;">
+
+
+              <div style="margin-bottom:20px;">
+
+                <h4 style="color:var(--green-dark);">
+                  🔐 Safer Reporting
+                </h4>
+
+                <p style="color:var(--muted);font-size:14px;">
+                  Keep reporting organized and protect
+                  sensitive information through controlled access.
+                </p>
+
+              </div>
+
+
+              <div style="margin-bottom:20px;">
+
+                <h4 style="color:var(--green-dark);">
+                  📍 Location-Aware
+                </h4>
+
+                <p style="color:var(--muted);font-size:14px;">
+                  Reports can contain locations and evidence
+                  that help identify affected heritage sites.
+                </p>
+
+              </div>
+
+
+              <div>
+
+                <h4 style="color:var(--green-dark);">
+                  🤝 Community Driven
+                </h4>
+
+                <p style="color:var(--muted);font-size:14px;">
+                  Give communities and researchers a structured
+                  way to contribute to heritage protection.
+                </p>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CALL TO ACTION
+         =================================================== -->
+
+    <section class="cta">
+
+      <div class="container cta-inner">
+
+        <div>
+
+          <h2>
+            Be a Guardian of Our Heritage
+          </h2>
+
+          <p>
+            See something that threatens a heritage site?
+            Make a responsible report.
+          </p>
+
+        </div>
+
+
+        <a
+          href="report.html"
+          class="btn btn-gold"
+        >
+          🛡 Report a Threat
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        Heritage<span>Guard</span>
+      </div>
+
+      <div class="footer-note">
+
+        ©
+        <span id="year"></span>
+        HeritageGuard.
+        Protect. Report. Preserve.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+
+    /*
+    ========================================================
+    HERITAGEGUARD DYNAMIC DATA
+
+    The website is designed to connect to a backend.
+
+    Later your Node.js / Express backend can provide:
+
+        GET /api/public/stats
+
+        GET /api/public/reports
+
+
+    Example statistics returned by backend:
+
+    {
+      "reports": 127,
+      "sites": 48,
+      "resolved": 32,
+      "users": 256
+    }
+
+
+    Example reports:
+
+    [
+      {
+        "title": "Illegal Excavation",
+        "location": "Kasese",
+        "date": "12 Aug 2026",
+        "status": "Pending"
+      }
+    ]
+
+    ========================================================
+    */
+
+
+    /* ----------------------------------------------------
+       TEMPORARY DEVELOPMENT DATA
+
+       This allows you to see the design before
+       connecting MySQL.
+    ---------------------------------------------------- */
+
+    const demoStats = {
+
+      reports: 127,
+
+      sites: 48,
+
+      resolved: 32,
+
+      users: 256
+
+    };
+
+
+    const demoReports = [
+
+      {
+        title: "Illegal Excavation",
+
+        location: "Kasese, Western Region",
+
+        date: "12 Aug 2026",
+
+        status: "Pending"
+      },
+
+
+      {
+        title: "Artifact Removal",
+
+        location: "Jinja, Eastern Region",
+
+        date: "10 Aug 2026",
+
+        status: "Under Review"
+      },
+
+
+      {
+        title: "Site Damage",
+
+        location: "Gulu, Northern Region",
+
+        date: "08 Aug 2026",
+
+        status: "Resolved"
+      }
+
+    ];
+
+
+
+    /* ----------------------------------------------------
+       ANIMATE STATISTICS
+    ---------------------------------------------------- */
+
+    function animateNumber(element, target) {
+
+      const duration = 700;
+
+      const start = performance.now();
+
+
+      function update(currentTime) {
+
+        const progress =
+          Math.min(
+            (currentTime - start) / duration,
+            1
+          );
+
+
+        const value =
+          Math.floor(progress * target);
+
+
+        element.textContent =
+          value.toLocaleString();
+
+
+        if (progress < 1) {
+
+          requestAnimationFrame(update);
+
+        }
+
+      }
+
+
+      requestAnimationFrame(update);
+
+    }
+
+
+
+    /* ----------------------------------------------------
+       DISPLAY STATISTICS
+    ---------------------------------------------------- */
+
+    function renderStats(stats) {
+
+      animateNumber(
+        document.getElementById("reportsCount"),
+        Number(stats.reports || 0)
+      );
+
+
+      animateNumber(
+        document.getElementById("sitesCount"),
+        Number(stats.sites || 0)
+      );
+
+
+      animateNumber(
+        document.getElementById("resolvedCount"),
+        Number(stats.resolved || 0)
+      );
+
+
+      animateNumber(
+        document.getElementById("usersCount"),
+        Number(stats.users || 0)
+      );
+
+    }
+
+
+
+    /* ----------------------------------------------------
+       DETERMINE REPORT STATUS STYLE
+    ---------------------------------------------------- */
+
+    function statusClass(status) {
+
+      const value =
+        String(status).toLowerCase();
+
+
+      if (
+        value.includes("resolved")
+      ) {
+
+        return "resolved";
+
+      }
+
+
+      if (
+        value.includes("review") ||
+        value.includes("investigat")
+      ) {
+
+        return "review";
+
+      }
+
+
+      return "pending";
+
+    }
+
+
+
+    /* ----------------------------------------------------
+       DISPLAY REPORTS
+    ---------------------------------------------------- */
+
+    function renderReports(reports) {
+
+      const container =
+        document.getElementById(
+          "recentReports"
+        );
+
+
+      if (
+        !reports ||
+        reports.length === 0
+      ) {
+
+        container.innerHTML =
+          `
+            <div class="empty">
+              No public reports available yet.
+            </div>
+          `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        reports
+          .slice(0, 5)
+          .map(report => {
+
+            return `
+
+              <article class="report-item">
+
+                <div class="report-thumb">
+                  🏛
+                </div>
+
+
+                <div>
+
+                  <h4>
+                    ${escapeHTML(
+                      report.title ||
+                      report.threat_type ||
+                      "Heritage Threat"
+                    )}
+                  </h4>
+
+
+                  <p>
+                    📍
+                    ${escapeHTML(
+                      report.location ||
+                      "Location not provided"
+                    )}
+                  </p>
+
+
+                  <p>
+                    🗓
+                    ${escapeHTML(
+                      report.date ||
+                      report.created_at ||
+                      "Recently"
+                    )}
+                  </p>
+
+                </div>
+
+
+                <span
+                  class="status
+                  ${statusClass(
+                    report.status
+                  )}"
+                >
+
+                  ${escapeHTML(
+                    report.status ||
+                    "Pending"
+                  )}
+
+                </span>
+
+              </article>
+
+            `;
+
+          })
+          .join("");
+
+    }
+
+
+
+    /* ----------------------------------------------------
+       SECURITY:
+       Prevent API data from being inserted as raw HTML.
+    ---------------------------------------------------- */
+
+    function escapeHTML(value) {
+
+      return String(value)
+
+        .replaceAll("&", "&amp;")
+
+        .replaceAll("<", "&lt;")
+
+        .replaceAll(">", "&gt;")
+
+        .replaceAll('"', "&quot;")
+
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+
+    /* ----------------------------------------------------
+       LOAD DATA FROM BACKEND
+    ---------------------------------------------------- */
+
+    async function loadPublicData() {
+
+      try {
+
+
+        /*
+        These endpoints will be created later
+        in Node.js / Express.
+        */
+
+        const [
+
+          statsResponse,
+
+          reportsResponse
+
+        ] = await Promise.all([
+
+          fetch(
+            "/api/public/stats"
+          ),
+
+          fetch(
+            "/api/public/reports"
+          )
+
+        ]);
+
+
+        if (
+          !statsResponse.ok ||
+          !reportsResponse.ok
+        ) {
+
+          throw new Error(
+            "Backend API unavailable"
+          );
+
+        }
+
+
+        const stats =
+          await statsResponse.json();
+
+
+        const reports =
+          await reportsResponse.json();
+
+
+        renderStats(stats);
+
+        renderReports(reports);
+
+
+      }
+
+      catch (error) {
+
+        /*
+        Backend is not connected yet.
+
+        Show demo data while developing
+        the frontend.
+        */
+
+        console.log(
+          "Using frontend demo data:",
+          error.message
+        );
+
+
+        renderStats(
+          demoStats
+        );
+
+
+        renderReports(
+          demoReports
+        );
+
+      }
+
+    }
+
+
+
+    /* ----------------------------------------------------
+       MOBILE MENU
+    ---------------------------------------------------- */
+
+    document
+      .getElementById("menuBtn")
+      .addEventListener(
+        "click",
+        () => {
+
+          const nav =
+            document.querySelector(
+              ".nav-links"
+            );
+
+
+          if (
+            nav.style.display === "flex"
+          ) {
+
+            nav.style.display = "";
+
+          }
+
+          else {
+
+            nav.style.display = "flex";
+
+            nav.style.position = "absolute";
+
+            nav.style.top = "82px";
+
+            nav.style.left = "0";
+
+            nav.style.right = "0";
+
+            nav.style.padding = "18px 20px";
+
+            nav.style.background = "#ffffff";
+
+            nav.style.flexDirection = "column";
+
+            nav.style.alignItems = "flex-start";
+
+            nav.style.borderBottom =
+              "1px solid #e3e9e4";
+
+          }
+
+        }
+      );
+
+
+
+    /* ----------------------------------------------------
+       CURRENT YEAR
+    ---------------------------------------------------- */
+
+    document
+      .getElementById("year")
+      .textContent =
+      new Date().getFullYear();
+
+
+
+    /* ----------------------------------------------------
+       START APPLICATION
+    ---------------------------------------------------- */
+
+    loadPublicData();
+
+
+  </script>
+
+</body>
+</html>
